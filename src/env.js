@@ -10,6 +10,8 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
+    ECF_API_ENDPOINT: z.string(),
+    ECF_API_TOKEN: z.string(),
   },
 
   /**
@@ -27,6 +29,8 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
+    ECF_API_ENDPOINT: process.env.ECF_API_ENDPOINT,
+    ECF_API_TOKEN: process.env.ECF_API_TOKEN,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
