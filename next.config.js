@@ -10,6 +10,17 @@ const nextConfig = {
     ppr: true,
     dynamicIO: true,
   },
+  images: {
+    dangerouslyAllowSVG: true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "d1ogj02ptc5x6g.cloudfront.net",
+        port: "",
+        search: "",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
