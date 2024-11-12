@@ -44,7 +44,10 @@ export type Product = {
   };
   relationships: {
     bundled_items: {
-      data: unknown[];
+      data: {
+        id: string;
+        type: string;
+      }[];
     };
     variants: {
       data: {
@@ -53,10 +56,38 @@ export type Product = {
       }[];
     };
     product_categories: {
-      data: unknown[];
+      data: {
+        id: string;
+        type: string;
+      }[];
     };
     thumbnail: {
-      data: unknown | null;
+      data: {
+        id: string;
+        type: string;
+      } | null;
     };
+  };
+};
+
+export type Thumbnail = {
+  id: string;
+  type: string;
+  attributes: {
+    id: number;
+    file_name: string;
+    content_type: string;
+    file_size: number;
+    position: number;
+    url: string;
+    url_small: string;
+    url_medium: string;
+    url_large: string;
+    path: string;
+    path_small: string;
+    path_medium: string;
+    path_large: string;
+    created_at: string;
+    updated_at: string;
   };
 };

@@ -9,7 +9,7 @@ export default async function ProductPage({
 }) {
   "use cache";
 
-  const product = await getProductInfo((await params).id);
+  const product = await ecforceApi.products.get((await params).id);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -17,8 +17,11 @@ export default async function ProductPage({
         {/* 商品画像 */}
         <div className="aspect-square relative overflow-hidden rounded-lg bg-gray-200">
           <Image
-            src="/placeholder.svg?height=600&width=600"
-            alt="保湿フェイスクリーム"
+            src={
+              product.attributes.thumbnail?.attributes.url_large ??
+              "/placeholder.svg?height=600&width=600"
+            }
+            alt={product.attributes.name}
             layout="fill"
             objectFit="cover"
             className="w-full h-full object-center"
@@ -31,7 +34,7 @@ export default async function ProductPage({
             {product.attributes.name}
           </h1>
           <p className="text-2xl font-bold text-gray-900">
-            ¥{product.attributes.master_sales_price}
+            ¥{product.attributes.master_sales_price.toLocaleString()}
           </p>
           <p className="text-gray-700">{product.attributes.description}</p>
           <div className="mt-6">
@@ -41,9 +44,4 @@ export default async function ProductPage({
       </div>
     </div>
   );
-}
-
-async function getProductInfo(id: string) {
-  const res = await ecforceApi.products.get(id);
-  return res;
 }

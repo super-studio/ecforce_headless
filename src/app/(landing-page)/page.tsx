@@ -4,7 +4,9 @@ import { BrandConcept } from "./_components/brand-concept";
 import { News } from "./_components/news";
 import { SignUp } from "./_components/sign-up";
 
-export default function Page() {
+export default async function Page() {
+  "use cache";
+
   return (
     <>
       <Hero />
