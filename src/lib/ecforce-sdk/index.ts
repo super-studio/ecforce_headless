@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { env } from "@/env";
+import { getProduct, listProducts } from "./products/endpoints";
 
 /**
  * API仕様書: https://apidoc.ec-force.com/apidoc/v2/admin/index.html
  */
-async function callEcforceApi<T>(
+export async function callEcforceApi<T>(
   {
     path,
     method,
@@ -35,20 +36,9 @@ async function callEcforceApi<T>(
   return responseData;
 }
 
-async function listProducts(fetchOptions?: RequestInit) {
-  return (
-    await callEcforceApi<any>(
-      {
-        path: "/admin/products",
-        method: "GET",
-      },
-      fetchOptions
-    )
-  ).data;
-}
-
 export const ecforceApi = {
   products: {
     list: listProducts,
+    get: getProduct,
   },
 };
