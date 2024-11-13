@@ -32,6 +32,16 @@ export async function callEcforceApi<T>(
     ...fetchOptions,
   });
 
+  if (!response.ok) {
+    console.error(
+      "API request failed",
+      response.status,
+      response.statusText,
+      await response.text()
+    );
+    throw new Error(`API request failed: ${response.status}`);
+  }
+
   const responseData = await response.json();
   return responseData;
 }
