@@ -19,8 +19,8 @@ export async function callEcforceApi<T>(
   },
   fetchOptions?: RequestInit
 ): Promise<T> {
-  console.log("callEcforceApi", path, method, headers, data);
   const url = `${env.ECF_API_ENDPOINT}${path}`;
+  console.log("callEcforceApi", method, url, headers, data);
   const response = await fetch(url, {
     method,
     headers: {

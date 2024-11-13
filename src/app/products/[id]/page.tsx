@@ -7,9 +7,7 @@ export default async function ProductPage({
 }: {
   params: Promise<{ id: string }>;
 }) {
-  "use cache";
-
-  const product = await ecforceApi.products.get((await params).id);
+  const product = await getProduct((await params).id);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -44,4 +42,9 @@ export default async function ProductPage({
       </div>
     </div>
   );
+}
+
+async function getProduct(id: string) {
+  "use cache";
+  return await ecforceApi.products.get(id);
 }

@@ -7,15 +7,15 @@ export async function NewArrival() {
   const filteredProducts = products.slice(0, 4);
 
   return (
-    <section className="py-12 px-4">
+    <section className="py-12 px-4 flex flex-col items-center">
       <div className="text-center">
         <div className="text-3xl">NEW ARRIVAL</div>
         <div className="text-xl">新商品</div>
       </div>
-      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="max-w-7xl mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         {filteredProducts.map((product) => (
           <div key={product.id} className="relative">
-            <Link href={`/products/${product.id}`}>
+            <Link prefetch href={`/products/${product.id}`}>
               <Image
                 src={
                   product.attributes.thumbnail?.attributes.url_medium ??
