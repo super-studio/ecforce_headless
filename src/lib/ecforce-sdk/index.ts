@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { env } from "@/env";
 import { getProduct, listProducts } from "./products/endpoints";
+import { NotFoundError } from "../errors/not-found-error";
 
 /**
  * API仕様書: https://apidoc.ec-force.com/apidoc/v2/admin/index.html
@@ -33,6 +34,9 @@ export async function callEcforceApi<T>(
   });
 
   if (!response.ok) {
+    if (response.status === 404) {
+      throw new NotFoundError();
+    }
     console.error(
       "API request failed",
       response.status,

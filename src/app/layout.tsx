@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-gray-50 antialiased min-h-screen pt-16 flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-background antialiased min-h-screen pt-16 flex flex-col`}
       >
         <div className="scroll-top-anchor" />
         <Header />

@@ -3,6 +3,8 @@ import { AddToCartForm } from "./_components/add-to-cart-form";
 import { ecforceApi } from "@/lib/ecforce-sdk";
 import { cacheTag } from "next/dist/server/use-cache/cache-tag";
 import { cacheLife } from "next/dist/server/use-cache/cache-life";
+import { NotFoundError } from "@/lib/errors/not-found-error";
+import { notFound } from "next/navigation";
 
 export default async function ProductPage({
   params,
@@ -10,6 +12,10 @@ export default async function ProductPage({
   params: Promise<{ id: string }>;
 }) {
   const product = await getProduct((await params).id);
+
+  if (!product) {
+    return notFound();
+  }
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -53,5 +59,11 @@ async function getProduct(id: string) {
   "use cache";
   cacheTag("products", `product-${id}`);
   cacheLife("hours");
-  return await ecforceApi.products.get(id);
+  try {
+    return await ecforceApi.products.get(id);
+  } catch (error) {
+    if (error instanceof NotFoundError) {
+      return null;
+    }
+  }
 }
