@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { AddToCartForm } from "./_components/add-to-cart-form";
 import { ecforceApi } from "@/lib/ecforce-sdk";
+import { cacheTag } from "next/dist/server/use-cache/cache-tag";
+import { cacheLife } from "next/dist/server/use-cache/cache-life";
 
 export default async function ProductPage({
   params,
@@ -46,5 +48,7 @@ export default async function ProductPage({
 
 async function getProduct(id: string) {
   "use cache";
+  cacheTag("products", `product-${id}`);
+  cacheLife("hours");
   return await ecforceApi.products.get(id);
 }
