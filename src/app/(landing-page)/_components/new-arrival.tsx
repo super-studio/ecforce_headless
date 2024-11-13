@@ -1,6 +1,6 @@
+import { Link } from "@/components/ui/link";
 import { ecforceApi } from "@/lib/ecforce-sdk";
 import Image from "next/image";
-import Link from "next/link";
 
 export async function NewArrival() {
   const products = await ecforceApi.products.list();

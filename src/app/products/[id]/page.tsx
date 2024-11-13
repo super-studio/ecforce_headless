@@ -21,6 +21,8 @@ export default async function ProductPage({
               product.attributes.thumbnail?.attributes.url_large ??
               "/placeholder.svg?height=600&width=600"
             }
+            loading="eager"
+            decoding="sync"
             alt={product.attributes.name}
             priority
             sizes="600px"

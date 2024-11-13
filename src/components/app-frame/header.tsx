@@ -1,5 +1,5 @@
 import { Menu, Search, ShoppingCart } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/components/ui/link";
 
 export function Header() {
   return (
