@@ -22,9 +22,10 @@ export default async function ProductPage({
               "/placeholder.svg?height=600&width=600"
             }
             alt={product.attributes.name}
-            layout="fill"
-            objectFit="cover"
-            className="w-full h-full object-center"
+            priority
+            sizes="600px"
+            className="w-full h-full object-center object-cover"
+            fill
           />
         </div>
 
