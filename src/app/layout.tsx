@@ -30,6 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-gray-50 antialiased min-h-screen pt-16 flex flex-col`}
       >
+        <div className="scroll-top-anchor" />
         <Header />
         <main className="grow">{children}</main>
         <Footer />
