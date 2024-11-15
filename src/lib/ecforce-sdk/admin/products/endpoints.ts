@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { callEcforceApi } from "..";
-import { Product, Thumbnail } from "./types";
+import { callEcforceApi } from "../../shared";
+import type { Product, Thumbnail } from "./types";
 
 export async function listProducts(fetchOptions?: RequestInit) {
   const res = await callEcforceApi<{ data: Product[]; included: Thumbnail[] }>(
