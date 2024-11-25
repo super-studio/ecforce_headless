@@ -3,7 +3,7 @@ import { ecforceApi } from "@/lib/ecforce-sdk";
 import Image from "next/image";
 
 export async function NewArrival() {
-  const products = await ecforceApi.products.list();
+  const products = await ecforceApi.admin.products.list();
   const filteredProducts = products.slice(0, 4);
 
   return (
