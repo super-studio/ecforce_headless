@@ -34,7 +34,7 @@ export function News() {
             <time className="text-sm text-gray-500 whitespace-nowrap">
               {item.date}
             </time>
-            <h3 className="text-lg font-semibold">{item.title}</h3>
+            <div className="text-lg font-semibold">{item.title}</div>
           </div>
         ))}
       </div>

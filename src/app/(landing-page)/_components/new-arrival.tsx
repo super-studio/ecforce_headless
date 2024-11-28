@@ -27,7 +27,7 @@ export async function NewArrival() {
                 className="w-full h-auto"
               />
               <div className="mt-2">
-                <h3 className="font-semibold">{product.attributes.name}</h3>
+                <div className="font-semibold">{product.attributes.name}</div>
                 <p className="text-gray-600">
                   ¥{product.attributes.master_sales_price.toLocaleString()}
                 </p>

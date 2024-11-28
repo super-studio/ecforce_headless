@@ -5,7 +5,7 @@ export function Footer() {
     <footer className="bg-gray-100 py-12 px-4">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
-          <h3 className="font-bold mb-4">CATEGORY</h3>
+          <div className="font-bold mb-4">CATEGORY</div>
           <ul className="space-y-2">
             <li>
               <Link href="#" className="text-gray-600 hover:text-black">
@@ -25,7 +25,7 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <h3 className="font-bold mb-4">MEMBER</h3>
+          <div className="font-bold mb-4">MEMBER</div>
           <ul className="space-y-2">
             <li>
               <Link href="#" className="text-gray-600 hover:text-black">
@@ -45,7 +45,7 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <h3 className="font-bold mb-4">ABOUT</h3>
+          <div className="font-bold mb-4">ABOUT</div>
           <ul className="space-y-2">
             <li>
               <Link href="#" className="text-gray-600 hover:text-black">
@@ -65,7 +65,7 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <h3 className="font-bold mb-4">SERVICE</h3>
+          <div className="font-bold mb-4">SERVICE</div>
           <ul className="space-y-2">
             <li>
               <Link href="#" className="text-gray-600 hover:text-black">
