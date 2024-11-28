@@ -32,7 +32,7 @@ export async function NewArrival() {
                   ¥{product.attributes.master_sales_price.toLocaleString()}
                 </p>
               </div>
-              <span className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 text-xs rounded">
+              <span className="absolute top-2 right-2 font-bold bg-red-600 text-white px-2 py-1 text-xs rounded">
                 NEW
               </span>
             </Link>
