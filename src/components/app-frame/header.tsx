@@ -16,7 +16,7 @@ export function Header() {
           </h1>
         </div>
         <div className="flex space-x-4 flex-1 justify-end">
-          <Link href="/customer">
+          <Link href="/customer" aria-label="Customer">
             <User2 className="w-6 h-6" />
           </Link>
           <ShoppingCart className="w-6 h-6" />
