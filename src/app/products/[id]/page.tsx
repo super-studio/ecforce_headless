@@ -60,10 +60,12 @@ async function getProduct(id: string) {
   cacheTag("products", `product-${id}`);
   cacheLife("hours");
   try {
+    console.log(`Fetching product ${id}`);
     return await ecforceApi.admin.products.get(id);
   } catch (error) {
     if (error instanceof NotFoundError) {
       return null;
     }
+    throw error;
   }
 }
