@@ -58,7 +58,7 @@ export default async function ProductPage({
 async function getProduct(id: string) {
   "use cache";
   cacheTag("products", `product-${id}`);
-  cacheLife("hours");
+  cacheLife("max");
   try {
     console.log(`Fetching product ${id}. ${new Date().toISOString()}`);
     return await ecforceApi.admin.products.get(id);
