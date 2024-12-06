@@ -59,8 +59,8 @@ async function getProduct(id: string) {
   "use cache";
   cacheTag("products", `product-${id}`);
   cacheLife("max");
+
   try {
-    console.log(`Fetching product ${id}. ${new Date().toISOString()}`);
     return await ecforceApi.admin.products.get(id);
   } catch (error) {
     if (error instanceof NotFoundError) {

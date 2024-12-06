@@ -8,8 +8,8 @@ import { cacheLife } from "next/dist/server/use-cache/cache-life";
 
 export default async function Page() {
   "use cache";
-  cacheTag("landing-page");
-  cacheLife("hours");
+  cacheTag("products", "landing-page");
+  cacheLife("max");
 
   return (
     <>
