@@ -15,6 +15,8 @@ import {
 } from "@/components/ui/card";
 import { SessionProvider, useSession } from "next-auth/react";
 import type { Session } from "next-auth";
+import { Alert } from "@/components/ui/alert";
+import { AlertTriangle } from "lucide-react";
 
 export default function Page() {
   return (
@@ -40,7 +42,7 @@ function PageWrapper() {
 
 function CustomerPage(props: { session: Session }) {
   return (
-    <div className="flex items-center justify-center my-40">
+    <div className="flex items-center justify-center mt-40">
       <Card className="w-[350px]">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl">ようこそ</CardTitle>
@@ -66,7 +68,7 @@ function SignInPage() {
   const [state, formAction] = useActionState(signIn, null);
 
   return (
-    <div className="flex items-center justify-center my-40">
+    <div className="flex items-center justify-center mt-40">
       <Card className="w-[350px]">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl">サインイン</CardTitle>
@@ -82,6 +84,12 @@ function SignInPage() {
           }}
         >
           <CardContent className="grid gap-4">
+            <Alert variant="destructive">
+              <div className="flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4" />
+                <p>サインイン処理は無効になっています</p>
+              </div>
+            </Alert>
             <div className="grid gap-2">
               <Label htmlFor="email">メールアドレス</Label>
               <Input id="email" name="email" type="email" required />
