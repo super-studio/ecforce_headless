@@ -1,10 +1,10 @@
 import { Link } from "@/components/ui/link";
 import { ecforceApi } from "@/lib/ecforce-sdk";
+import { unstable_cache } from "next/cache";
 import Image from "next/image";
 
 export async function NewArrival() {
-  const products = await ecforceApi.admin.products.list();
-  const filteredProducts = products.slice(0, 4);
+  const mainProducts = await getMainProducts();
 
   return (
     <section className="py-12 px-4 flex flex-col items-center">
@@ -13,7 +13,7 @@ export async function NewArrival() {
         <div className="text-xl">新商品</div>
       </div>
       <div className="max-w-7xl mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-        {filteredProducts.map((product) => (
+        {mainProducts.map((product) => (
           <div key={product.id} className="relative">
             <Link prefetch href={`/products/${product.id}`}>
               <Image
@@ -42,3 +42,15 @@ export async function NewArrival() {
     </section>
   );
 }
+
+const getMainProducts = unstable_cache(
+  async () => {
+    const products = await ecforceApi.admin.products.list();
+    const filteredProducts = products.slice(0, 4);
+    return filteredProducts;
+  },
+  undefined,
+  {
+    tags: ["products"],
+  }
+);

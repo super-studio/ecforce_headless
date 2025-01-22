@@ -1,10 +1,11 @@
 import Image from "next/image";
 import { AddToCartForm } from "./_components/add-to-cart-form";
 import { ecforceApi } from "@/lib/ecforce-sdk";
-import { cacheTag } from "next/dist/server/use-cache/cache-tag";
-import { cacheLife } from "next/dist/server/use-cache/cache-life";
+// import { cacheTag } from "next/dist/server/use-cache/cache-tag";
+// import { cacheLife } from "next/dist/server/use-cache/cache-life";
 import { NotFoundError } from "@/lib/errors/not-found-error";
 import { notFound } from "next/navigation";
+import { unstable_cache } from "next/cache";
 
 export default async function ProductPage({
   params,
@@ -55,17 +56,35 @@ export default async function ProductPage({
   );
 }
 
-async function getProduct(id: string) {
-  "use cache";
-  cacheTag("products", `product-${id}`);
-  cacheLife("max");
+// TODO: "use cache" is still experimental and does not seem to be working as expected
+// async function getProduct(id: string) {
+//   "use cache";
+//   cacheTag("products", `product-${id}`);
+//   cacheLife("max");
 
-  try {
-    return await ecforceApi.admin.products.get(id);
-  } catch (error) {
-    if (error instanceof NotFoundError) {
-      return null;
+//   try {
+//     return await ecforceApi.admin.products.get(id);
+//   } catch (error) {
+//     if (error instanceof NotFoundError) {
+//       return null;
+//     }
+//     throw error;
+//   }
+// }
+
+const getProduct = unstable_cache(
+  async (id: string) => {
+    try {
+      return await ecforceApi.admin.products.get(id);
+    } catch (error) {
+      if (error instanceof NotFoundError) {
+        return null;
+      }
+      throw error;
     }
-    throw error;
+  },
+  undefined,
+  {
+    tags: ["products"],
   }
-}
+);
