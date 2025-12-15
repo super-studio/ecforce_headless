@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
   }
 
   if (isProductUpdate) {
-    revalidateTag("products");
+    revalidateTag("products", "max");
   }
 
   return NextResponse.json({ status: 200, revalidated: true, now: Date.now() });

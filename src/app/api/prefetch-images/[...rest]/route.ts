@@ -2,8 +2,6 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { parseHTML } from "linkedom";
 
-export const dynamic = "force-static";
-
 const isDev = process.env.NODE_ENV === "development" || process.env.IS_LOCAL;
 
 function getHostname() {
